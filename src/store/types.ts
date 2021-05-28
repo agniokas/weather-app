@@ -24,3 +24,15 @@ export default interface WeatherState {
     error: string,
     weatherDataLoaded: boolean
 }
+
+export interface AllWeatherState {
+    weather: WeatherState
+}
+
+export interface FormState {
+    form: CityState
+}
+
+export interface CityState {
+    city: string
+}

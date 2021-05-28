@@ -2,34 +2,41 @@ import { useEffect } from "react";
 import { hot } from "react-hot-loader";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getCurrentWeather, getPlace } from "./store/selectors";
-import { fetchWeatherAction } from "./store/thunks";
-import WeatherState, { Weather } from "./store/types";
+import { getCurrentWeather, getError, getPlace, getunits } from "./store/selectors";
+import { fetchWeatherAction, fetchCurrentWeatherbyPlace } from "./store/thunks";
 import PlaceForm from "./components/placeForm";
+import { formValues } from "redux-form";
 
 
 const App: React.FC<{}> = () => {
 
   // const currentWeather = useSelector<WeatherState, WeatherState['currentWeather']>(state => state.currentWeather);
-  const currentWeather = useSelector(getCurrentWeather);
-  const city = useSelector(getPlace);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchWeatherAction());
   }, [])
 
+  const currentWeather = useSelector(getCurrentWeather);
+  const city = useSelector(getPlace);
+  const units = useSelector(getunits);
+  const error = useSelector(getError);
+  
   console.log("currentWeather", currentWeather)
+  console.log("city", city)
+  console.log("units", units)
 
-  const submit = (values: string) => {
-    console.log(values)
+  const submit = (values: any) => {
+    console.log("submit button has been fired");
+    dispatch(fetchCurrentWeatherbyPlace(values));
   }
 
   return (
     <>
     <PlaceForm onSubmit={submit}/>
     <h1>WEATHER APP</h1>
-    <div>{currentWeather?.temperature}</div>
+    <h2>{currentWeather?.city}, {currentWeather?.country}</h2>
+    <h2>{currentWeather?.temperature}</h2>
     </>
   );
 };

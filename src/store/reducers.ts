@@ -1,3 +1,4 @@
+
 import { ChangePlacePayload, ChangeUnitsPayload, FetchErrorPayload, FetchSuccessPayload } from "./actions";
 import WeatherState, * as types from "./types";
 
@@ -17,6 +18,7 @@ const weatherReducer = (state = initialState, action: any) => {
             return {
                 ...state,
                 currentWeather: weatherPayload,
+                error: '',
                 weatherDataLoaded: true,
             }
         case types.FETCH_WEATHER_ERROR: 
