@@ -1,22 +1,13 @@
 import React from "react";
-import { Form, Field, reduxForm } from "redux-form";
+import { Form, Field, reduxForm, change } from "redux-form";
 
 interface Props { };
 
-let PlaceForm: React.FC<Props>  = (props: any) => {
-    const { handleSubmit, pristine, submitting} = props;
+let UnitsForm: React.FC<Props>  = (props: any) => {
+    const { handleSubmit } = props;
 
     return (
         <Form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="city">Enter City name</label>
-                <Field 
-                name="city" 
-                component="input" 
-                type="text" 
-                placeholder="City name"
-                />
-            </div>
             <div>
                 <label htmlFor="city">Chose units</label>
                 <div>
@@ -26,6 +17,11 @@ let PlaceForm: React.FC<Props>  = (props: any) => {
                             component="input" 
                             type="radio" 
                             value="m"
+                            onSubmit={handleSubmit}
+                            // onChange={(event: any) => {
+                            //     event.preventDefault();
+                            //     props.dispatch(change("units", "units", "m"))
+                            //     }} 
                                 />
                         Celcius
                     </label>
@@ -35,20 +31,20 @@ let PlaceForm: React.FC<Props>  = (props: any) => {
                             component="input" 
                             type="radio" 
                             value="f" 
+                            onSubmit={handleSubmit}
+                            // onChange={(event: any) => {
+                            //     event.preventDefault();
+                            //     props.dispatch(change("units", "units", "f"))
+                            //     }} 
                                 />
                         Fahrengheit
                     </label>
                 </div>
             </div>
-            <button 
-                type="submit" 
-                disabled={pristine || submitting}
-                >Submit
-            </button>
         </Form>
     )
 }
 
-const form = reduxForm<{}, Props>({form: "place"})(PlaceForm);
+const form = reduxForm<{}, Props>({form: "units"})(UnitsForm);
 
 export default form

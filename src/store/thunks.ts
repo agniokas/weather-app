@@ -69,6 +69,11 @@ export const fetchCurrentWeatherbyPlace = (values: any): ThunkAction<void, any, 
         type: actions.CHANGE_PLACE,
         payload: values.city
     })
+    
+    dispatch({
+        type: actions.CHANGE_UNITS,
+        payload: values.units
+    })
 
     dispatch(fetchWeatherAction());
     }

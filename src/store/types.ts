@@ -29,10 +29,10 @@ export interface AllWeatherState {
     weather: WeatherState
 }
 
-export interface FormState {
-    form: CityState
-}
-
 export interface CityState {
     city: string
+}
+
+export interface UnitsState {
+    units: string
 }
