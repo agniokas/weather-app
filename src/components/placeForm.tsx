@@ -7,8 +7,8 @@ let PlaceForm: React.FC<Props>  = (props: any) => {
     const { handleSubmit, pristine, submitting} = props;
 
     return (
-        <Form onSubmit={handleSubmit}>
-            <div>
+        <Form className="form" onSubmit={handleSubmit}>
+            <div className="form-location">
                 <label htmlFor="city">Enter City name</label>
                 <Field 
                 name="city" 
@@ -17,8 +17,8 @@ let PlaceForm: React.FC<Props>  = (props: any) => {
                 placeholder="City name"
                 />
             </div>
-            <div>
-                <label htmlFor="city">Chose units</label>
+            <div className="form-units">
+                <label htmlFor="units">Chose units</label>
                 <div>
                     <label>
                         <Field 

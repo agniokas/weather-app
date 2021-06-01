@@ -37,12 +37,14 @@
     "@types/webpack-env": "^1.16.0",
     "axios": "^0.21.1",
     "i": "^0.3.6",
+    "json-loader": "^0.5.7",
     "material-ui": "^0.20.2",
     "mini-css-extract-plugin": "^1.6.0",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hot-loader": "^4.13.0",
+    "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
@@ -51,6 +53,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "scss": "^0.2.4",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.2",
+    "url-loader": "^4.1.1"
   }
 }

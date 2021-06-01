@@ -8,13 +8,18 @@ export interface Weather {
     feelsLike: number,
     humidity: number,
     weatherDescription: string,
-    weatherIcon: string,
+    weatherCode: number,
     windSpeed: number,
     windDirection: string,
+    weatherIcon: string,
+    precipitation: number,
+    uvIndex: number,
     lastUpdated: string,
     city: string,
     country: string,
-    isDay: boolean
+    isDay: string,
+    iconDay: string,
+    iconNight: string
 }
 
 export default interface WeatherState {
@@ -36,3 +41,5 @@ export interface CityState {
 export interface UnitsState {
     units: string
 }
+
+

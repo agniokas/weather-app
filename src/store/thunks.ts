@@ -2,11 +2,9 @@ import axios from "axios";
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import moment from "moment";
-import { FormState, formValues, getFormValues } from "redux-form";
 
 import { apiKey } from "../../apiKey";
-import AllWeatherState, * as actions from "./types";
-import { getPlace } from "./selectors";
+import * as actions from "./types";
 
 const BaseUrl = 'http://api.weatherstack.com/';
 
@@ -36,6 +34,7 @@ console.log("state", state.place)
         const current = response.data.current;
         const location = response.data.location;
 
+        console.log("response weather code", current.weather_code)
         dispatch({
             type: actions.FETCH_WEATHER_SUCCESS,
             payload: {
@@ -43,9 +42,12 @@ console.log("state", state.place)
                 feelsLike: current.feelslike,
                 humidity: current.humidity,
                 weatherDescription: current.weather_descriptions[0],
-                weatherIcon: current.weather_icons[0],
+                weatherCode: current.weather_code,
                 windSpeed: current.wind_speed,
                 windDirection: current.wind_dir,
+                weatherIcon: current.weatherIcon,
+                precipitation: current.precip,
+                uvIndex: current.uv_index,
                 lastUpdated: moment().format('HH:mm'),
                 city: location.name,
                 country: location.country,
