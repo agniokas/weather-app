@@ -6,11 +6,13 @@ import { fetchWeatherAction, fetchCurrentWeatherbyPlace } from "./store/thunks";
 import PlaceForm from "./components/placeForm";
 import LocationElement from "./components/locationElement";
 import MainWeatherInfoElement from "./components/mainWeatherInfoElement";
-import AdditionalInfoElement from "./components/additionalInfoElement";
+import { getCurrentWeather, getunits } from "./store/selectors";
 
-const App: React.FC<{}> = () => {
+const App = () => {
 
   const dispatch = useDispatch();
+  const currentWeather = useSelector(getCurrentWeather);
+  const units = useSelector(getunits);
 
   useEffect(() => {
     dispatch(fetchWeatherAction());
@@ -24,9 +26,9 @@ const App: React.FC<{}> = () => {
     <>
       <div className="main">
         <PlaceForm onSubmit={submitCity}/>
-        <LocationElement />
-        <MainWeatherInfoElement />
-        {/* <AdditionalInfoElement/> */}
+        <hr />
+        <LocationElement currentWeather={currentWeather}/>
+        <MainWeatherInfoElement  currentWeather={currentWeather} units={units} />
       </div>
     </>
   );

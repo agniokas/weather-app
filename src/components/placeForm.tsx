@@ -9,25 +9,26 @@ let PlaceForm: React.FC<Props>  = (props: any) => {
     return (
         <Form className="form" onSubmit={handleSubmit}>
             <div className="form-location">
-                <label htmlFor="city">Enter City name</label>
+                <label  className="label-names" htmlFor="city">Enter City name</label>
                 <Field 
                 name="city" 
                 component="input" 
                 type="text" 
                 placeholder="City name"
+                required
                 />
             </div>
             <div className="form-units">
-                <label htmlFor="units">Chose units</label>
+                <label className="label-names" htmlFor="units">Chose units</label>
                 <div>
-                    <label>
+                    <label >
                         <Field 
                             name="units" 
                             component="input" 
                             type="radio" 
                             value="m"
                                 />
-                        Celcius
+                        <span className="radio-input">C</span>
                     </label>
                     <label>
                         <Field 
@@ -36,7 +37,7 @@ let PlaceForm: React.FC<Props>  = (props: any) => {
                             type="radio" 
                             value="f" 
                                 />
-                        Fahrengheit
+                        <span className="radio-input">F</span>
                     </label>
                 </div>
             </div>

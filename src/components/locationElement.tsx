@@ -1,12 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import moment from "moment";
+import React, {useState} from "react";
 
-import { getCurrentWeather, getError, getPlace, getunits } from "../store/selectors";
+import { Weather } from "../store/types";
 
-const locationElement: React.FC<{}> = () => {
+const locationElement: React.FC<{ currentWeather: Weather | null}> = (props) => {
 
-    const currentWeather = useSelector(getCurrentWeather);
+    const currentWeather = props.currentWeather;
 
     const currentDate = Date.now();
     const today = new Date(currentDate);

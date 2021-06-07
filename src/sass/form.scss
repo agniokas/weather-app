@@ -1,0 +1,138 @@
+.form {
+    display: grid;
+    grid-template-columns: 50% 30% 20%;
+    column-gap: 30px;
+    justify-self: start;
+    align-self: center;
+    margin-bottom: 50px;
+}
+
+.form-location {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-self: start;
+    align-self: center; 
+}
+
+.form-units {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-self: start;
+    align-self: center;
+}
+
+label {
+    margin-right: 15px;
+    font-size: 1.5rem;
+}
+
+input{
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: $secondary-color-transparent;
+    padding: 5px 15px;
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+
+    &::placeholder {
+        color: $primary-color;
+    }
+}
+.radio-input {
+    font-weight: 700; 
+    font-size: 2rem;
+    padding-left: 10px;
+}
+
+button {
+    font-size: 1.5rem;
+    background-color: $secondary-color-transparent;
+    color: $secondary-color;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 30px;
+
+    &:hover {
+        background-color: $primary-color;
+        border: 1px solid $secondary-color;
+        color: $secondary-color;
+    }
+
+    &:disabled {
+        color: $primary-color;
+
+        &:hover {
+            background-color: $secondary-color-transparent;
+            border: none;
+        }
+    }
+}
+
+@include breakpoint(tablet){
+
+    .form {
+        grid-template-columns: 40% 35% 35%;
+        margin-bottom: 50px;
+        justify-self: center;
+    }
+
+    .form-location {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr; 
+    }
+    
+    .form-units {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    button {
+        align-self: end;
+        padding: 5px 0;
+        max-width: 150px;
+    }
+}
+
+@include breakpoint(mobile) {
+
+    .form {
+        grid-template-columns: 55% 45%;
+        grid-template-rows: 1fr 1fr;
+        margin-bottom: 10px;
+        justify-self: center;
+    }
+
+    input{
+        max-width: 200px;
+    }
+
+    .form-location {
+        grid-template-rows: 1fr;
+        justify-self: start;
+        max-width: 60%;
+        padding-bottom: 10px;
+    }
+
+    .form-units {
+        grid-template-rows: 1fr; 
+        justify-self: start;
+        align-self: center; 
+    }
+
+    .label-names {
+       display: none;
+    }
+
+    button {
+        max-width: 100%;
+        min-width: 320px;
+        display: block;
+        width: auto;
+    }
+
+    
+    
+}
