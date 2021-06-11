@@ -1,34 +1,31 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { hot } from "react-hot-loader";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { fetchWeatherAction, fetchCurrentWeatherbyPlace } from "./store/thunks";
-import PlaceForm from "./components/placeForm";
-import LocationElement from "./components/locationElement";
-import MainWeatherInfoElement from "./components/mainWeatherInfoElement";
-import { getCurrentWeather, getunits } from "./store/selectors";
+import { fetchCurrentWeather, fetchCurrentWeatherbyPlaceAndUnits } from "./store/thunks";
+import WeatherForm from "./components/WeatherForm";
+import WeatherInfo from "./components/WeatherInfo";
+
 
 const App = () => {
 
   const dispatch = useDispatch();
-  const currentWeather = useSelector(getCurrentWeather);
-  const units = useSelector(getunits);
+
 
   useEffect(() => {
-    dispatch(fetchWeatherAction());
+    dispatch(fetchCurrentWeather());
   }, [])
 
   const submitCity = (values: any) => {
-    dispatch(fetchCurrentWeatherbyPlace(values));
+    dispatch(fetchCurrentWeatherbyPlaceAndUnits(values));
   }
 
   return (
     <>
       <div className="main">
-        <PlaceForm onSubmit={submitCity}/>
+        <WeatherForm onSubmit={submitCity}/>
         <hr />
-        <LocationElement currentWeather={currentWeather}/>
-        <MainWeatherInfoElement  currentWeather={currentWeather} units={units} />
+        <WeatherInfo />
       </div>
     </>
   );

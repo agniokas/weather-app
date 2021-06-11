@@ -1,4 +1,12 @@
 
+.location {
+    font-weight: 700;
+}
+
+.date {
+    font-size: 1.5rem;
+}
+
 .element-wrap__main {
     display: grid; 
     grid-template-columns: 1fr 1fr;
@@ -8,10 +16,11 @@
 }
 
 .weather-icon {
-    font-size: 7rem;
+    font-size: 10rem;
     justify-self: end;
     align-self: center;
 }
+
 
 .weather-data {
     justify-self: end;
@@ -24,7 +33,7 @@
 }
 
 .weather-data__description {
-    
+    font-size: 1.5rem;
 }
 
 .element-wrap__secondary {
@@ -46,47 +55,72 @@
      font-size: 1.2rem;
  }
 
+ @include breakpoint(laptop) {
+    .element-wrap__main {
+
+    }    
+ }
+
  @include breakpoint(tablet) {
     .element-wrap__main {
-        column-gap: 10px;
+        border-right: none;
+        border-bottom: 2px solid $secondary-color-transparent;
     }    
+
+    .weather-icon {
+        height: 170px;
+    }
+
+    .weather-data {
+        justify-self: start;
+        height: 170px;
+    } 
+
+    .element-wrap__secondary {
+        margin-top: 50px;
+    }
  }
 
 
  @include breakpoint(mobile) {
+    .location {
+        font-size: 1.5rem;
+    }
+    
+    .date {
+        font-size: 1.0rem;
+    }
+
     .element-wrap__main {
-        column-gap: 10px;
-        border-right: none;
-        border-bottom: 2px solid $secondary-color-transparent;
-        padding: 15px;
+        margin-top: 20px;
     }
 
     .weather-icon {
-        font-size: 5rem; 
-        justify-self: center;   
+        font-size: 8rem;
+        max-height: 150px;
+        height: auto;
+    }
+
+    .weather-data {
+        max-height: 150px;
     }
     
-    .weather-data {
-        justify-self: center;
-        align-self: center;
-    } 
-    
     .weather-data__temperature {
-        font-size: 4rem;
+        font-size: 5rem;
         font-weight: 900;
     }
     
     .weather-data__description {
         font-size: 1.2rem;
     }
-     
-     .info-data {
-         font-size: 1.5rem;
-     }
-    
-     .info-description {
 
-         font-size: 0.9rem;
-     }
+    .element-wrap__secondary {
+        margin-top: 30px;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 20px;
+        justify-self: start;
+        width: 100%;
+        padding: 15px;
+    }
     
  }

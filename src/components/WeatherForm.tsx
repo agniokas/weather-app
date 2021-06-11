@@ -3,7 +3,7 @@ import { Form, Field, reduxForm } from "redux-form";
 
 interface Props { };
 
-let PlaceForm: React.FC<Props>  = (props: any) => {
+let WeatherForm: React.FC<Props>  = (props: any) => {
     const { handleSubmit, pristine, submitting} = props;
 
     return (
@@ -50,6 +50,6 @@ let PlaceForm: React.FC<Props>  = (props: any) => {
     )
 }
 
-const form = reduxForm<{}, Props>({form: "place"})(PlaceForm);
+const form = reduxForm<{}, Props>({form: "place"})(WeatherForm);
 
 export default form
