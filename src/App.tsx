@@ -16,14 +16,14 @@ const App = () => {
     dispatch(fetchCurrentWeather());
   }, [])
 
-  // const submitCity = (values: any) => {
-  //   dispatch(fetchCurrentWeatherbyPlaceAndUnits(values));
-  // }
+  const submit = (values: any) => {
+    dispatch(fetchCurrentWeatherbyPlaceAndUnits(values));
+  }
 
   return (
     <>
       <div className="main">
-        <WeatherForm />
+        <WeatherForm onSubmit={submit}/>
         <hr />
         <WeatherInfo />
       </div>
