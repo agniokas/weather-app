@@ -1,19 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
-@import "./variables", "./mixins", "./form", "./weather";
+@import "./variables", "./mixins", "./form", "./weather", "./reset.scss";
+
+html {
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+}
+
+body {
+    min-height: 100%;
+    background: $primary-color;
+    color: $secondary-color;
+}
 
 html, body {
-    font-family: "Roboto", sans-serif;
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 #root {
-    background: $primary-color;
-    color: $secondary-color;
     font-size: 2rem;
     height: 100%;
     margin: 0;

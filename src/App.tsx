@@ -3,7 +3,7 @@ import { hot } from "react-hot-loader";
 import { useDispatch } from "react-redux";
 
 import { fetchCurrentWeather, fetchCurrentWeatherbyPlaceAndUnits } from "./store/thunks";
-import WeatherForm from "./components/WeatherForm";
+import WeatherForm from "./components/forms/WeatherForm";
 import WeatherInfo from "./components/WeatherInfo";
 
 
@@ -16,14 +16,14 @@ const App = () => {
     dispatch(fetchCurrentWeather());
   }, [])
 
-  const submitCity = (values: any) => {
-    dispatch(fetchCurrentWeatherbyPlaceAndUnits(values));
-  }
+  // const submitCity = (values: any) => {
+  //   dispatch(fetchCurrentWeatherbyPlaceAndUnits(values));
+  // }
 
   return (
     <>
       <div className="main">
-        <WeatherForm onSubmit={submitCity}/>
+        <WeatherForm />
         <hr />
         <WeatherInfo />
       </div>

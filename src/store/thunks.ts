@@ -59,3 +59,15 @@ export const fetchCurrentWeatherbyPlaceAndUnits = (values: any): ThunkAction<voi
     dispatch(fetchCurrentWeather());
     };
 };
+export const fetchCurrentWeatherbyPlace = (values: any): ThunkAction<void, any, string, AnyAction> => { 
+    return (dispatch) => {
+    dispatch(changePlaceAction(values.city));
+    dispatch(fetchCurrentWeather());
+    };
+};
+export const fetchCurrentWeatherbyUnits = (values: any): ThunkAction<void, any, string, AnyAction> => { 
+    return (dispatch) => {
+    dispatch(changeUnitsAction(values.units))
+    dispatch(fetchCurrentWeather());
+    };
+};

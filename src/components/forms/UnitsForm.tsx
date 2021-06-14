@@ -1,23 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Form, Field, reduxForm } from "redux-form";
+
+import {changeUnitsAction} from "../../store/actions";
 
 interface Props { };
 
-let WeatherForm: React.FC<Props>  = (props: any) => {
-    const { handleSubmit, pristine, submitting} = props;
 
+const UnitsForm: React.FC<Props> = (props: any) => {
+    const { handleSubmit, onChange, values } = props;
+    
     return (
-        <Form className="form" onSubmit={handleSubmit}>
-            <div className="form-location">
-                <label  className="label-names" htmlFor="city">Enter City name</label>
-                <Field 
-                name="city" 
-                component="input" 
-                type="text" 
-                placeholder="City name"
-                required
-                />
-            </div>
+        <Form onSubmit={handleSubmit}>
             <div className="form-units">
                 <label className="label-names" htmlFor="units">Chose units</label>
                 <div>
@@ -27,6 +21,7 @@ let WeatherForm: React.FC<Props>  = (props: any) => {
                             component="input" 
                             type="radio" 
                             value="m"
+                            onChange={values}
                                 />
                         <span className="radio-input">C</span>
                     </label>
@@ -36,20 +31,16 @@ let WeatherForm: React.FC<Props>  = (props: any) => {
                             component="input" 
                             type="radio" 
                             value="f" 
+                            onChange={values}
                                 />
                         <span className="radio-input">F</span>
                     </label>
                 </div>
             </div>
-            <button 
-                type="submit" 
-                disabled={pristine || submitting}
-                >Submit
-            </button>
         </Form>
     )
-}
+};
 
-const form = reduxForm<{}, Props>({form: "place"})(WeatherForm);
+const form = reduxForm<{}, Props>({form: "place"})(UnitsForm);
 
-export default form
+export default form;

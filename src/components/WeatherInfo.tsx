@@ -25,7 +25,7 @@ const WeatherInfo = () => {
 
     return (
         <>
-            {!weatherDataLoaded && <LinearProgress color="secondary" />}
+            {!weatherDataLoaded && <LinearProgress />}
 
             {weatherDataLoaded && 
             <div>
