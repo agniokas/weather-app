@@ -13,7 +13,7 @@
 
 .form-units {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% 60%;
     justify-self: start;
     align-self: center;
 }
@@ -46,30 +46,6 @@ input{
     padding-left: 10px;
 }
 
-button {
-    font-size: 1.5rem;
-    background-color: $secondary-color-transparent;
-    color: $secondary-color;
-    border-radius: 5px;
-    border: none;
-    padding: 5px 30px;
-
-    &:hover {
-        background-color: $primary-color;
-        border: 1px solid $secondary-color;
-        color: $secondary-color;
-    }
-
-    &:disabled {
-        color: $primary-color;
-
-        &:hover {
-            background-color: $secondary-color-transparent;
-            border: none;
-        }
-    }
-}
-
 @include breakpoint(laptop) {
     .form {
         display: grid;
@@ -77,34 +53,14 @@ button {
         justify-self: start;
         align-self: center;
     }
-
-    .form-location {
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-self: start;
-        align-self: center; 
-    }
-    
-    .form-units {
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-self: start;
-        align-self: center;
-    }
     
     input {
         max-width: 300px;
-    }
-
-    button {
-        align-self: end;
     }
 }
 
 @include breakpoint(tablet){
     .form {
-        display: grid;
-        grid-template-columns: 1fr;
         row-gap: 10px;
         justify-self: start;
         align-self: center;
@@ -112,19 +68,10 @@ button {
     }
 
     .form-location {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        justify-self: start;
-        align-self: center; 
         width: 100%;
     }
     
     .form-units {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        // justify-content: space-evenly;
-        justify-self: start;
-        align-self: center;
         width: 100%;
     }
 
@@ -139,19 +86,22 @@ button {
 }
 
 @include breakpoint(mobile) {
-
     .form {
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 15px;
         margin-bottom: 20px;
         justify-self: center;
     }
 
     .form-location {
         grid-template-columns: 1fr;
+        row-gap: 10px;
     }
 
     .form-units {
         grid-template-columns: 1fr;
+        row-gap: 10px;
     }
 
     input{
@@ -160,14 +110,5 @@ button {
 
     .label-names {
        display: none;
-    }
-
-    button {
-        min-width: 300px;
-        display: block;
-        width: 100%;
-    }
-
-    
-    
+    } 
 }

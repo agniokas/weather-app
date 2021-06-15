@@ -1,7 +1,6 @@
 
-import { ChangePlacePayload, ChangeUnitsPayload, FetchErrorPayload, FetchSuccessPayload } from "./actions";
+import { FetchErrorPayload, FetchSuccessPayload } from "./actions";
 import WeatherState, * as types from "./types";
-
 
 const initialState: WeatherState = {
     currentWeather: null,
@@ -27,18 +26,6 @@ const weatherReducer = (state = initialState, action: any) => {
                 ...state,
                 error: errorPayload,
                 weatherDataLoaded: false,
-            }
-        case types.CHANGE_PLACE:
-            const placePayload = action.payload as ChangePlacePayload;
-            return {
-                ...state,
-                place: placePayload
-            }
-        case types.CHANGE_UNITS:
-            const unitsPayload = action.payload as ChangeUnitsPayload;
-            return {
-                ...state,
-                units: unitsPayload
             }
         default:
             return state

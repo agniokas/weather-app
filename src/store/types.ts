@@ -42,4 +42,9 @@ export interface UnitsState {
     units: string
 }
 
+export interface FormValues {
+    city?: string,
+    units?: string
+}
+
 

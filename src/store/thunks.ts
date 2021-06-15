@@ -4,7 +4,8 @@ import { ThunkAction } from "redux-thunk";
 import moment from "moment";
 
 import { apiKey } from "../../apiKey";
-import {changePlaceAction, changeUnitsAction, fetchSuccessAction, fetchErrorAction} from "./actions";
+import {fetchSuccessAction, fetchErrorAction} from "./actions";
+import { getFormWeatherState } from "../store/selectors";
 
 const BaseUrl = 'http://api.weatherstack.com/';
 
@@ -15,13 +16,12 @@ export interface Params {
 }
 
 export const fetchCurrentWeather = (): ThunkAction<void, any, unknown, AnyAction> => (dispatch, getState) => {
-
-    const state = getState().weather;
+    const formWeatherState = getFormWeatherState(getState());
 
     const params: Params = {
         access_key: apiKey,
-        query: state.place,
-        units: state.units
+        query: formWeatherState?.city || "Vilnius",
+        units: formWeatherState?.units || "m",
     }
   
    axios.get(`${BaseUrl}current`, {params})
@@ -29,7 +29,8 @@ export const fetchCurrentWeather = (): ThunkAction<void, any, unknown, AnyAction
         const current = response.data.current;
         const location = response.data.location;
 
-        console.log("response weather code", current.weather_code)
+        console.log(response)
+
         dispatch(fetchSuccessAction({
             temperature: current.temperature, 
             feelsLike: current.feelslike,
@@ -52,22 +53,8 @@ export const fetchCurrentWeather = (): ThunkAction<void, any, unknown, AnyAction
     })
 };
 
-export const fetchCurrentWeatherbyPlaceAndUnits = (values: any): ThunkAction<void, any, string, AnyAction> => { 
+export const fetchCurrentWeatherbyPlaceAndUnits = (): ThunkAction<void, any, string, AnyAction> => { 
     return (dispatch) => {
-    dispatch(changePlaceAction(values.city));
-    dispatch(changeUnitsAction(values.units))
-    dispatch(fetchCurrentWeather());
-    };
-};
-export const fetchCurrentWeatherbyPlace = (values: any): ThunkAction<void, any, string, AnyAction> => { 
-    return (dispatch) => {
-    dispatch(changePlaceAction(values.city));
-    dispatch(fetchCurrentWeather());
-    };
-};
-export const fetchCurrentWeatherbyUnits = (values: any): ThunkAction<void, any, string, AnyAction> => { 
-    return (dispatch) => {
-    dispatch(changeUnitsAction(values.units))
     dispatch(fetchCurrentWeather());
     };
 };

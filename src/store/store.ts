@@ -11,7 +11,7 @@ const composeEnhancers = composeWithDevTools({
 });
 
 const persistConfig = {
-    bleckList: ["form"],
+    blackList: ["form"],
     key: "reactreduxform",
     storage
 };

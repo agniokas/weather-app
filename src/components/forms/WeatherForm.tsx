@@ -1,12 +1,11 @@
 import React from "react";
-import { Form, Field, reduxForm } from "redux-form";
+import { Form, Field, reduxForm, InjectedFormProps } from "redux-form";
 
-interface Props { };
+type OwnProps = {}
 
-let WeatherForm: React.FC<Props>  = (props: any) => {
+interface Props extends InjectedFormProps, OwnProps {}
 
-  const {handleSubmit, values} = props;
-  
+let WeatherForm: React.FC<Props>  = ({handleSubmit}) => {
 
     return (
       <div>
@@ -19,7 +18,6 @@ let WeatherForm: React.FC<Props>  = (props: any) => {
               type="text" 
               placeholder="City name"
               required
-              onChange={values}
             />
           </div>
           <div className="form-units">
@@ -31,7 +29,7 @@ let WeatherForm: React.FC<Props>  = (props: any) => {
                   component="input" 
                   type="radio" 
                   value="m"
-                  onChange={values}
+                 onClick={handleSubmit}
                 />
                 <span className="radio-input">C</span>
               </label>
@@ -41,7 +39,7 @@ let WeatherForm: React.FC<Props>  = (props: any) => {
                   component="input" 
                   type="radio" 
                   value="f" 
-                  onChange={values}
+                  onClick={handleSubmit}
                 />
                 <span className="radio-input">F</span>
               </label>
@@ -52,6 +50,6 @@ let WeatherForm: React.FC<Props>  = (props: any) => {
     )
 };
 
-const form = reduxForm<{}, Props>({form: "weatherForm"})(WeatherForm);
+const form = reduxForm<OwnProps>({form: "weatherForm"})(WeatherForm);
 
 export default form;

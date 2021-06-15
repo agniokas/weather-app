@@ -16,8 +16,8 @@ const App = () => {
     dispatch(fetchCurrentWeather());
   }, [])
 
-  const submit = (values: any) => {
-    dispatch(fetchCurrentWeatherbyPlaceAndUnits(values));
+  const submit = () => {
+    dispatch(fetchCurrentWeather());
   }
 
   return (
