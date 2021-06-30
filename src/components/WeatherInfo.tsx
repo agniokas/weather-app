@@ -45,7 +45,7 @@ const WeatherInfo = () => {
                         <div className="weather-data">
                             <p className="weather-data__temperature">{currentWeather?.temperature}&#176;</p>
                             <p className="weather-data__description">
-                                {t(`${currentWeather?.weatherDescription}`)}
+                                {t(`weatherDescription.${currentWeather?.weatherDescription}`)}
                             </p>
                         </div>
                     </div>
