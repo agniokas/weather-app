@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { fetchCurrentWeather, fetchCurrentWeatherbyPlaceAndUnits } from "./store/thunks";
 import WeatherForm from "./components/forms/WeatherForm";
 import WeatherInfo from "./components/WeatherInfo";
+import Language from "./components/language/Language";
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <>
       <div className="main">
+        <Language />
         <WeatherForm onSubmit={submit}/>
         <hr />
         <WeatherInfo />

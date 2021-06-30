@@ -55,12 +55,6 @@
      font-size: 1.2rem;
  }
 
- @include breakpoint(laptop) {
-    .element-wrap__main {
-
-    }    
- }
-
  @include breakpoint(tablet) {
     .element-wrap__main {
         border-right: none;

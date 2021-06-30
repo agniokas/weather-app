@@ -5,7 +5,7 @@ const webpack = require("webpack");
 
 
 module.exports = {
-  entry: ["react-hot-loader/patch", "webpack-dev-server/client?http://localhost:8080", "webpack/hot/only-dev-server", "./src/index.tsx", "./src/sass/main.scss"],
+  entry: ["react-hot-loader/patch", "webpack-dev-server/client?http://localhost:3000", "webpack/hot/only-dev-server", "./src/index.tsx", "./src/sass/main.scss"],
   output: { 
     path: path.resolve(__dirname, "build"), 
     filename: "index.bundle.js" 
@@ -16,7 +16,7 @@ module.exports = {
   },
   devtool: 'cheap-module-source-map',
   devServer: { 
-    port: 8080,
+    port: 3000,
     contentBase: path.resolve(__dirname, "build"), 
     hot: true 
   },

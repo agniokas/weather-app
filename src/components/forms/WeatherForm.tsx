@@ -1,27 +1,41 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Form, Field, reduxForm, InjectedFormProps } from "redux-form";
 
-type OwnProps = {}
+type OwnProps = {};
 
-interface Props extends InjectedFormProps, OwnProps {}
+interface Props extends InjectedFormProps, OwnProps { };
 
 let WeatherForm: React.FC<Props>  = ({handleSubmit}) => {
 
+  const { t } = useTranslation();
+  
     return (
       <div>
         <Form onSubmit={handleSubmit}>
           <div className="form-location">
-            <label  className="label-names" htmlFor="city">Enter City name</label>
-            <Field 
+            <label
+              className="label-names"
+              htmlFor="city"
+            >
+              {t("Enter City name")}
+            </label>
+            <Field
+              className="city-input"
               name="city" 
               component="input" 
               type="text" 
-              placeholder="City name"
+              placeholder={t("City name")}
               required
             />
           </div>
           <div className="form-units">
-            <label className="label-names" htmlFor="units">Chose units</label>
+            <label
+              className="label-names"
+              htmlFor="units"
+            >
+              {t("Chose units")}
+            </label>
             <div>
               <label >
                 <Field 

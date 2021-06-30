@@ -10,3 +10,4 @@ export const getWeatherState = (state: AllWeatherState) => state.weather;
 
 export const getWeatherValues = getFormValues("weatherForm");
 export const getFormWeatherState = (state: AllWeatherState): FormValues => getWeatherValues(state);
+

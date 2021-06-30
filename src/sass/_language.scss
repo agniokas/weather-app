@@ -1,0 +1,27 @@
+.language {
+     display: grid;
+     grid-template-columns: 40% 60%;
+     justify-self: start;
+     align-self: center;
+
+}
+
+.lang-select {
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: $secondary-color-transparent;
+    padding: 5px 15px;
+    max-width: 100%;
+    color: $primary-color;
+}
+
+@include breakpoint(mobile) {
+.language {
+  grid-template-columns: 1fr;
+}
+
+    .lang-label {
+        display: none;
+    }
+}

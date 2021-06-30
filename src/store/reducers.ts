@@ -1,5 +1,5 @@
 
-import { FetchErrorPayload, FetchSuccessPayload } from "./actions";
+import { FetchErrorPayload, FetchSuccessPayload} from "./actions";
 import WeatherState, * as types from "./types";
 
 const initialState: WeatherState = {

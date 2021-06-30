@@ -6,14 +6,16 @@ import LinearProgress from "@material-ui/core/LinearProgress"
 
 import weatherConditions from "../assets/weatherCodes";
 import { getCurrentWeather, getunits, getWeatherDataLoaded } from "../store/selectors";
+import moment from "moment";
+import { useTranslation } from "react-i18next";
 
 const WeatherInfo = () => {
     const currentWeather = useSelector(getCurrentWeather);
     const units = useSelector(getunits);
     const weatherDataLoaded = useSelector(getWeatherDataLoaded);
     
-    const currentDate = Date.now();
-    const today = new Date(currentDate);
+    const currentDate = moment().format("MMM Do YYYY");
+    const { t } = useTranslation();
     
     const weatherCondition = weatherConditions.find(condition => {
          if (condition.weatherCode === currentWeather?.weatherCode) {
@@ -33,7 +35,7 @@ const WeatherInfo = () => {
                     <p className="location">
                         {currentWeather?.city}, <span>{currentWeather?.country}</span>
                     </p>
-                    <p className="date">{today.toDateString()}</p>
+                    <p className="date">{ t("Current date") }</p>
                 </div>
                 <div className="element-wrap grid">
                     <div className="element-wrap__main">
@@ -42,33 +44,36 @@ const WeatherInfo = () => {
                         </div>
                         <div className="weather-data">
                             <p className="weather-data__temperature">{currentWeather?.temperature}&#176;</p>
-                            <p className="weather-data__description">{currentWeather?.weatherDescription}</p>
+                            <p className="weather-data__description">
+                                {t(`${currentWeather?.weatherDescription}`)}
+                            </p>
                         </div>
                     </div>
                     <div  className="element-wrap__secondary">
                         <div className="info-wrap">
                             <p className="info-data">{currentWeather?.feelsLike}&#176;</p>
-                            <p className="info-description">Feels</p>
+                            <p className="info-description">{t("Feels")}</p>
                         </div>
                         <div className="info-wrap">
                             <p className="info-data">{currentWeather?.uvIndex}</p>
-                            <p className="info-description">UV index</p>
+                            <p className="info-description">{t("UV index")}</p>
                         </div>
                         <div className="info-wrap">
                             <p className="info-data">{currentWeather?.humidity}%</p>
-                            <p className="info-description">Humidity</p>
+                            <p className="info-description">{t("Humidity")}</p>
                         </div>
                         <div className="info-wrap">
                             <p className="info-data">{currentWeather?.precipitation}mm</p>
-                            <p className="info-description">Rain</p>
+                            <p className="info-description">{t("Rain")}</p>
                         </div>
                         <div className="info-wrap">
                             <p className="info-data">{currentWeather?.windSpeed}{units === "m" ? "kph" : "mph"}</p>
-                            <p className="info-description">Wind</p>
+                            <p className="info-description">{t("Wind")}</p>
                         </div>
                         <div className="info-wrap">
                             <p className="info-data">{currentWeather?.windDirection}</p>
-                            <p className="info-description">Wind direction</p>
+                            <p className="info-description">{t("Wind direction")}
+                            </p>
                         </div>
                     </div>
                 </div>
