@@ -3,18 +3,16 @@ import { IconType } from "react-icons/lib";
 import { useSelector } from "react-redux";
 import {WiDaySunny} from "react-icons/wi";
 import LinearProgress from "@material-ui/core/LinearProgress"
+import { useTranslation } from "react-i18next";
 
 import weatherConditions from "../assets/weatherCodes";
 import { getCurrentWeather, getunits, getWeatherDataLoaded } from "../store/selectors";
-import moment from "moment";
-import { useTranslation } from "react-i18next";
 
 const WeatherInfo = () => {
     const currentWeather = useSelector(getCurrentWeather);
     const units = useSelector(getunits);
     const weatherDataLoaded = useSelector(getWeatherDataLoaded);
     
-    const currentDate = moment().format("MMM Do YYYY");
     const { t } = useTranslation();
     
     const weatherCondition = weatherConditions.find(condition => {
